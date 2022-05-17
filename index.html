@@ -41,8 +41,17 @@
                 start_stop_button.style.backgroundColor = '#D85A58';
             };
             video.src = 'videos/dm_vector.mp4';
-        }
+            let view = document.getElementById("view");
+            view.addEventListener('mousemove',on_mouseMove);
 
+
+        }
+        function on_mouseMove(event){
+            var rect = event.target.getBoundingClientRect();
+            var x = event.clientX - Math.round(rect.left); //x position within the element.
+            var y = event.clientY - Math.round(rect.top);  //y position within the element.
+            glapp.update_mousePos(x,y);
+        }
         function startVideoStream() {
             glapp.has_video = false;
             let options = {

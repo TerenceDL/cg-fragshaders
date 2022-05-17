@@ -252,6 +252,13 @@ class GlApp {
 
         this.gl.bindTexture(this.gl.TEXTURE_2D, null);
     }
+    update_mousePos(x,y){
+        this.gl.useProgram(this.shader.custom.program);
+        this.gl.uniform2fv(this.shader.custom.uniforms.mouse_pos,new Float32Array([x,y]));
+
+
+        this.gl.useProgram(null);
+    }
 
     getFile(url) {
         return new Promise((resolve, reject) => {
